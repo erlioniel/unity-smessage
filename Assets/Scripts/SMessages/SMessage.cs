@@ -1,10 +1,10 @@
-﻿namespace Assets.Scripts.SMessages {
+﻿namespace SMessages {
     public abstract class SMessage {
-        protected bool Processed = true;
+        protected bool _processed = true;
 
-        public virtual bool IsProcess {
-            get { return Processed; }
-            set { Processed = value;  }
+        public virtual bool Processed {
+            get { return _processed; }
+            set { _processed = value; }
         }
     }
 }

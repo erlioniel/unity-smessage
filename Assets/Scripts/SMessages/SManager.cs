@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Assets.Scripts.SMessages {
+namespace SMessages {
     public delegate void SCallback<T>(T message) where T : SMessage;
 
     /// <summary>
@@ -56,7 +56,7 @@ namespace Assets.Scripts.SMessages {
         }
 
         public static void SCall<T>(T message) where T : SMessage {
-            _instance.Call(message); ;
+            _instance.Call(message);
         }
     }
 }

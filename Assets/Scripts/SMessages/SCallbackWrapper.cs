@@ -1,17 +1,17 @@
-﻿namespace Assets.Scripts.SMessages {
-    internal class SCallbackWrapper<U>
-        where U : SMessage {
-        private SCallback<U> _delegates;
+﻿namespace SMessages {
+    internal class SCallbackWrapper<T>
+        where T : SMessage {
+        private SCallback<T> _delegates;
 
-        public void Add(SCallback<U> value) {
+        public void Add(SCallback<T> value) {
             _delegates += value;
         }
 
-        public void Remove(SCallback<U> value) {
+        public void Remove(SCallback<T> value) {
             _delegates -= value;
         }
 
-        public void Call(U message) {
+        public void Call(T message) {
             _delegates(message);
         }
     }

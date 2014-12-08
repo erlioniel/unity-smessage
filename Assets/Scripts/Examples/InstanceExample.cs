@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.SMessages;
+﻿using SMessages;
 using UnityEngine;
 
 namespace Assets.Scripts.Examples {
@@ -41,9 +41,9 @@ namespace Assets.Scripts.Examples {
         }
 
         private void OnMessage(SMessageExample message) {
-            if (message.IsProcess) {
+            if (message.Processed) {
                 Debug.Log("Simple example callback");
-                message.IsProcess = false;
+                message.Processed = false;
             }
         }
     }
