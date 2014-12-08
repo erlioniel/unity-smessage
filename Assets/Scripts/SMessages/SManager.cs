@@ -45,22 +45,18 @@ namespace Assets.Scripts.SMessages {
 
         // STATIC
 
-        private static SManager _instance;
-
-        private static SManager Get() {
-            return _instance ?? (_instance = new SManager());
-        }
+        private static readonly SManager _instance = new SManager();
 
         public static void SAdd<T>(SCallback<T> value) where T : SMessage {
-            Get().Add(value);
+            _instance.Add(value);
         }
 
         public static void SRemove<T>(SCallback<T> value) where T : SMessage {
-            Get().Remove(value);
+            _instance.Remove(value);
         }
 
         public static void SCall<T>(T message) where T : SMessage {
-            Get().Call(message);;
+            _instance.Call(message); ;
         }
     }
 }
