@@ -43,5 +43,5 @@ namespace Assets.Scripts.Examples {
         }
     }
 
-    internal class SMessageExample : SMessage { }
+    internal class SMessageExample : AbstractSMessage { }
 }

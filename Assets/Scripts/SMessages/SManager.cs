@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace SMessages {
-    public delegate void SCallback<T>(T message) where T : SMessage;
+    public delegate void SCallback<T>(T message) where T : AbstractSMessage;
 
     /// <summary>
     /// Tiny message system based on native delegates
@@ -19,9 +19,9 @@ namespace SMessages {
         /// <summary>
         /// Just add new handler to selected event type
         /// </summary>
-        /// <typeparam name="T">SMessage event</typeparam>
+        /// <typeparam name="T">AbstractSMessage event</typeparam>
         /// <param name="value">Handler function</param>
-        public void Add<T>(SCallback<T> value) where T : SMessage {
+        public void Add<T>(SCallback<T> value) where T : AbstractSMessage {
             var type = typeof (T);
             if (!_handlers.ContainsKey(type)) {
                 _handlers.Add(type, new SCallbackWrapper<T>());
@@ -29,14 +29,14 @@ namespace SMessages {
             ((SCallbackWrapper<T>) _handlers[type]).Add(value);
         }
 
-        public void Remove<T>(SCallback<T> value) where T : SMessage {
+        public void Remove<T>(SCallback<T> value) where T : AbstractSMessage {
             var type = typeof (T);
             if (_handlers.ContainsKey(type)) {
                 ((SCallbackWrapper<T>) _handlers[type]).Remove(value);
             }
         }
 
-        public void Call<T>(T message) where T : SMessage {
+        public void Call<T>(T message) where T : AbstractSMessage {
             var type = message.GetType();
             if (_handlers.ContainsKey(type)) {
                 ((SCallbackWrapper<T>) _handlers[type]).Call(message);
@@ -47,15 +47,15 @@ namespace SMessages {
 
         private static readonly SManager _instance = new SManager();
 
-        public static void SAdd<T>(SCallback<T> value) where T : SMessage {
+        public static void SAdd<T>(SCallback<T> value) where T : AbstractSMessage {
             _instance.Add(value);
         }
 
-        public static void SRemove<T>(SCallback<T> value) where T : SMessage {
+        public static void SRemove<T>(SCallback<T> value) where T : AbstractSMessage {
             _instance.Remove(value);
         }
 
-        public static void SCall<T>(T message) where T : SMessage {
+        public static void SCall<T>(T message) where T : AbstractSMessage {
             _instance.Call(message);
         }
     }

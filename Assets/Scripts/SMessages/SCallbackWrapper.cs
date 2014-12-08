@@ -1,6 +1,6 @@
 ﻿namespace SMessages {
     internal class SCallbackWrapper<T>
-        where T : SMessage {
+        where T : AbstractSMessage {
         private SCallback<T> _delegates;
 
         public void Add(SCallback<T> value) {

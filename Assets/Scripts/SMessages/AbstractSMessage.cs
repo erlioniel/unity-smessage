@@ -1,5 +1,5 @@
 ﻿namespace SMessages {
-    public abstract class SMessage {
+    public abstract class AbstractSMessage {
         protected bool _processed = true;
 
         public virtual bool Processed {
