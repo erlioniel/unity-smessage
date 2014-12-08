@@ -12,7 +12,9 @@
         }
 
         public void Call(T message) {
-            _delegates(message);
+            if (_delegates != null) {
+                _delegates(message);
+            }
         }
     }
 }
