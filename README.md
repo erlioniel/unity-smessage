@@ -43,9 +43,9 @@ public class ExampleHandlerObject : MonoBehaviour {
 ```
 
 **More examples**
-* Singleton - https://github.com/erlioniel/unity-smessage/blob/master/Assets/Scripts/Examples/SingletonExample.cs
-* Valued event - https://github.com/erlioniel/unity-smessage/blob/master/Assets/Scripts/Examples/ValuedMessageExample.cs
-* Advanced example - https://github.com/erlioniel/unity-smessage/blob/master/Assets/Scripts/Examples/AdvanceExample.cs
+* [Singleton][Assets/Scripts/Examples/SingletonExample.cs]
+* [Valued event][Assets/Scripts/Examples/ValuedMessageExample.cs]
+* [Advanced example][Assets/Scripts/Examples/AdvanceExample.cs]
 
 ### Prerequisites
 
