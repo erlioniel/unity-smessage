@@ -1,62 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace SMessages {
-    public delegate void SCallback<T>(T message) where T : AbstractSMessage;
+    public static class SManager {
+        private static SMessageOperator instance = new SMessageOperatorImpl();
 
-    /// <summary>
-    /// Tiny message system based on native delegates
-    /// </summary>
-    public class SManager {
-        private readonly Dictionary<Type, object> _handlers;
-
-        // INSTANCE
-
-        public SManager() {
-            _handlers = new Dictionary<Type, object>();
+        public static void SetGlobalManager(SMessageOperator op) {
+            // ToDo Register all old callbacks to new manager
+            instance = op;
         }
-
-        /// <summary>
-        /// Just add new handler to selected event type
-        /// </summary>
-        /// <typeparam name="T">AbstractSMessage event</typeparam>
-        /// <param name="value">Handler function</param>
-        public void Add<T>(SCallback<T> value) where T : AbstractSMessage {
-            var type = typeof (T);
-            if (!_handlers.ContainsKey(type)) {
-                _handlers.Add(type, new SCallbackWrapper<T>());
-            }
-            ((SCallbackWrapper<T>) _handlers[type]).Add(value);
-        }
-
-        public void Remove<T>(SCallback<T> value) where T : AbstractSMessage {
-            var type = typeof (T);
-            if (_handlers.ContainsKey(type)) {
-                ((SCallbackWrapper<T>) _handlers[type]).Remove(value);
-            }
-        }
-
-        public void Call<T>(T message) where T : AbstractSMessage {
-            var type = message.GetType();
-            if (_handlers.ContainsKey(type)) {
-                ((SCallbackWrapper<T>) _handlers[type]).Call(message);
-            }
-        }
-
-        // STATIC
-
-        private static readonly SManager _instance = new SManager();
 
         public static void SAdd<T>(SCallback<T> value) where T : AbstractSMessage {
-            _instance.Add(value);
+            instance.Add(value);
         }
 
         public static void SRemove<T>(SCallback<T> value) where T : AbstractSMessage {
-            _instance.Remove(value);
+            instance.Remove(value);
         }
 
         public static void SCall<T>(T message) where T : AbstractSMessage {
-            _instance.Call(message);
+            instance.Call(message);
+        }
+
+        /// <summary>
+        /// Advanced reflection call for calling propper handlers for subclasses
+        /// </summary>
+        /// <param name="message">Message object</param>
+        /// <param name="type">Type for calling</param>
+        public static void SReflectionCall<T>(T message, Type type) where T : AbstractSMessage {
+            instance.ReflectionCall(message, type);
         }
     }
 }
