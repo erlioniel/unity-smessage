@@ -43,9 +43,9 @@ public class ExampleHandlerObject : MonoBehaviour {
 ```
 
 **More examples**
-* [Singleton][Assets/Scripts/Examples/SingletonExample.cs]
-* [Valued event][Assets/Scripts/Examples/ValuedMessageExample.cs]
-* [Advanced example][Assets/Scripts/Examples/AdvanceExample.cs]
+* [Singleton](Assets/Scripts/Examples/SingletonExample.cs)
+* [Valued event](Assets/Scripts/Examples/ValuedMessageExample.cs)
+* [Advanced example](Assets/Scripts/Examples/AdvanceExample.cs)
 
 ### Prerequisites
 
