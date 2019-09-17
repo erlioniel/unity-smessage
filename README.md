@@ -1,3 +1,7 @@
+## !!! Deprecation disclaimer
+
+This code isn't supported anymore. Please use it only if you are really interested in this approach. As a better alternative I recommend (and actually using in my projects) [Signals by dimmpixeye](https://github.com/dimmpixeye/Unity3d-Signals)
+
 # SMessage for Unity
 
 The small and simple, but powerful and strict-typed messaging system for Unity engine.
